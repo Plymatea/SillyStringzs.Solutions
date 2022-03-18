@@ -35,14 +35,7 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
-  //   public ActionResult Details(int id)
-  //   {
-  //     ViewBag.PageTitle = "Eau Claire's: Stylist Details";
-  //     Stylist thisStylist = _db.Stylists.FirstOrDefault(c => c.StylistId == id);
-  //     return View(thisStylist);
-  //   }
-  
+      
     public ActionResult Details(int id)
     {
       ViewBag.CourseId = new SelectList(_db.Machines, "MachineId", "Name");

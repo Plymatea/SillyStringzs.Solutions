@@ -15,14 +15,13 @@ namespace Factory.Controllers
     {
       _db = db;
     }
-        public ActionResult Index()
+    public ActionResult Index()
     {
       List<Machine> model = _db.Machines.ToList();
       return View(model);
     }
     public ActionResult Create()
     {
-      // ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentMachineAbv");
       return View();
     }
 

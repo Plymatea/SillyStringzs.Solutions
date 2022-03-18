@@ -17,11 +17,13 @@ namespace Factory.Controllers
     }
     public ActionResult Index()
     {
+      ViewBag.PageTitle = "ToolBox for world domination";
       List<Machine> model = _db.Machines.ToList();
       return View(model);
     }
     public ActionResult Create()
     {
+      ViewBag.PageTitle = "Install Machine";
       return View();
     }
 

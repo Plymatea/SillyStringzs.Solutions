@@ -39,7 +39,7 @@ namespace Factory.Controllers
       
     public ActionResult Details(int id)
     {
-      ViewBag.CourseId = new SelectList(_db.Machines, "MachineId", "Name");
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
       var thisEngineer = _db.Engineers
           .Include(engineer => engineer.JoinEntities)
           .ThenInclude(join => join.Machine)

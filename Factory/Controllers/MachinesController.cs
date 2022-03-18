@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
-// using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Factory.Models;
@@ -34,12 +34,15 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index", "Machines"); 
     }
-
-    // public ActionResult Details(int id)
-    // {
-    //   Client thisClient = _db.Clients.FirstOrDefault(c => c.ClientId == id);
-    //   return View(thisClient);
-    // }
+    public ActionResult Details(int id)
+    {
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
+      var thisMachine = _db.Machines
+          .Include(machine => machine.JoinEntities)
+          .ThenInclude(join => join.Engineer)
+          .FirstOrDefault(engineer => engineer.MachineId == id);
+      return View(thisMachine);
+    }
 
     
   }

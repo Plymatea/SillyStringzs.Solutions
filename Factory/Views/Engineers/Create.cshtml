@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+@using System;
+@model Factory.Models.Engineer;  
+
+
+
+
+<div class="row mt-5">
+  <div class="col-2">
+  </div>
+  <div class="col-8">
+  <h4>More Minions!</h4>
+  <hr class="px-5">
+    @using (Html.BeginForm())
+    {
+      @Html.LabelFor(m => Model.Name, "Gotta type a name below")
+      @Html.TextBoxFor(m => Model.Name, new { @class = "form-control required"})
+      <input type="submit" value="Add Minion" class="btn btn-dark mt-2">
+
+    }
+  </div>
+  <div class="col-2">
+</div>
+</div>
+<hr/>

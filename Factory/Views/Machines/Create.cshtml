@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+@using System;
+@model Factory.Models.Machine;  
+
+
+<div class="row mt-5">
+  <div class="col-2">
+  </div>
+  <div class="col-8">
+  <h4>Create more evil gadgets to help take over the world</h4>
+  <hr class="px-5">
+    @using (Html.BeginForm())
+    {
+      @Html.LabelFor(m => Model.Name, "Machine Name")
+      @Html.TextBoxFor(m => Model.Name, new { @class = "form-control required"})
+      <input type="submit" value="Add New Tech" class="btn btn-dark mt-2">
+
+    }
+  </div>
+  <div class="col-2">
+</div>
+</div>
+<hr/>

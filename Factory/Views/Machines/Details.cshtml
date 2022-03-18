@@ -1,0 +1,39 @@
+@{
+  Layout = "_Layout";
+}
+@using Factory.Models;
+@using System;
+@using System.Collections.Generic;
+@model Factory.Models.Machine;  
+
+<h4>Specs</h4>
+
+<ul>
+  <li>Equipemnt ID: @Model.MachineId</li>
+  <li>Name: @Model.Name</li>
+
+  <li>Minions Trained to use this Tech: 
+    <ul>
+      @if (@Model.JoinEntities.Count <= 0) 
+      {
+        <li>@Model.Name is so new and devastating that noone has yet to understand it.</li> 
+      } else 
+      {
+        @foreach (var join in @Model.JoinEntities) 
+        {
+          <li>@join.Engineer.Name</li>
+        }
+      }
+      <hr/>
+      <p>Add Minions that have bested this tech: </p>
+      @using (Html.BeginForm("MachineAdd", "Machines"))
+    { 
+      @Html.Hidden("MachineId", Model.MachineId)
+      @Html.DropDownList("EngineerId", (IEnumerable<SelectListItem>)ViewBag.EngineerId, "", new { @class = "form-control"} )
+      <input type="submit" value="Best..That..Tech!" class="btn btn-dark mt-2">
+    }
+    </ul>
+  </li>
+</ul>
+
+

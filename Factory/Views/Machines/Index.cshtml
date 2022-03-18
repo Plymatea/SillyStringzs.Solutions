@@ -4,20 +4,22 @@
 @using Factory.Models;
 @using System;
 @using System.Collections.Generic;
-@* @model List<Registrar.Models.Course>;  
+@model List<Factory.Models.Machine>;  
 
-<h4>Course List</h4>
+<h4>Gadget List</h4>
 
 @if (@Model.Count == 0)
 {
-  <h5>Yo, PC Principle. Get some courses!</h5>
-} 
-
+  <h5>Yo, PC Principle. Need some Tech to rule!</h5>
+} else 
+{
+<p>Tech Obtained: @Model.Count</p>
 <ul>
-  @foreach(Course course in Model)
+  @foreach(Machine machine in Model)
   {
-    <li>@Html.ActionLink(course.CourseNumberFull, "Details", new { id = course.DepartmentId }) | Course Name: @course.Name | Student Count: 455</li>
+    <li>@Html.ActionLink(machine.Name, "Details", new { id = machine.MachineId }) </li>
   }
 </ul>
+}
 <hr/>
-<p>@Html.ActionLink("Add new department", "Create")</p> *@
+<p>@Html.ActionLink("Add new department", "Create")</p>

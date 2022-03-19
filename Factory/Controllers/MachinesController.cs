@@ -41,9 +41,19 @@ namespace Factory.Controllers
           .Include(machine => machine.JoinEntities)
           .ThenInclude(join => join.Engineer)
           .FirstOrDefault(engineer => engineer.MachineId == id);
+      ViewBag.PageTitle = thisMachine.Name;
       return View(thisMachine);
     }
-
+    [HttpPost]
+    public ActionResult MachineAdd(int EngineerId, int MachineId)
+    {
+    if (EngineerId != 0)
+    {
+        _db.MachineEngineer.Add(new MachineEngineer() { MachineId = MachineId, EngineerId = EngineerId });
+        _db.SaveChanges();
+    }
+      return RedirectToAction("Details", new {id = MachineId});
+    }
     
   }
 }

@@ -22,17 +22,21 @@
       {
         @foreach (var join in @Model.JoinEntities) 
         {
-          <li>@join.Machine.Name</li>
+          @using (@Html.BeginForm("DeleteMachine", "MachineEngineer")) 
+          {           
+            @Html.Hidden("joinId", $"{join.MachineEngineerId}")
+            <li>@join.Machine.Name || <input type="submit" value="Delete" style="font-size:.6em; padding:.25em" class="btn btn-xs btn-dark"/></li>
+          }
         }
       }
       <hr/>
       <p>Add Tech Trained On: </p>
       @using (Html.BeginForm("MachineAdd", "Engineers"))
-    { 
+      { 
       @Html.Hidden("EngineerId", Model.EngineerId)
       @Html.DropDownList("MachineId", (IEnumerable<SelectListItem>)ViewBag.MachineId, "", new { @class = "form-control"} )
       <input type="submit" value="Get those Certs" class="btn btn-dark mt-2">
-    }
+      }
     </ul>
 </ul>
 

@@ -24,7 +24,7 @@
         {
           @using (@Html.BeginForm("DeleteMachine", "MachineEngineer")) 
           {           
-            @Html.Hidden("joinId", $"{join.MachineEngineerId}")
+            @Html.Hidden("joinId", join.MachineEngineerId)
             <li>@join.Machine.Name || <input type="submit" value="Delete" style="font-size:.6em; padding:.25em" class="btn btn-xs btn-dark"/></li>
           }
         }

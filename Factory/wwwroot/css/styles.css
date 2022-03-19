@@ -1,0 +1,19 @@
+body {
+  padding: 20px;
+  border: 20px;
+  margin: 20px;
+  background-image: url('../img/28-285943_wallpaper-linear-white-gradient-blue-highlight-light-blue.jpg');
+  background-size: cover;
+}
+
+h1 {
+  color: rgb(255, 89, 0);
+  font-size: 4rem;
+  text-shadow: black 3px 3px;
+  font-family: 'Sigmar One', cursive;
+}
+
+.banner {
+  background-image: url('../img/minions-top-banner.jpg');
+  background-size: cover;
+}

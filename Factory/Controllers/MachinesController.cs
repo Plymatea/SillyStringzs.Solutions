@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Factory.Models;
 using System.Linq;
+using System;
+
 
 namespace Factory.Controllers
 {
@@ -30,9 +32,16 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Machine machine)
     {
+      if (String.IsNullOrEmpty(machine.Name))
+      {
+        return RedirectToAction("Index");
+      } else
+      {
       _db.Machines.Add(machine);
       _db.SaveChanges();
       return RedirectToAction("Index", "Machines"); 
+      }
+
     }
     public ActionResult Details(int id)
     {
